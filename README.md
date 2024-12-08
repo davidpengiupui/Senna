@@ -45,9 +45,9 @@ pip install -r requirements.txt
 ```
 
 ### Data Preparation
-We provide a [script](data_tools\senna_nusc_data_converter.py) for generating QA data required for Senna training. The script uses [LLaVA-v1.6-34b](https://huggingface.co/liuhaotian/llava-v1.6-34b) as the model for generating scene descriptions and planning explanations. You can run the script as follows:
+We provide a [script](https://github.com/hustvl/Senna/blob/main/data_tools/senna_nusc_data_converter.py) for generating QA data required for Senna training. The script uses [LLaVA-v1.6-34b](https://huggingface.co/liuhaotian/llava-v1.6-34b) as the model for generating scene descriptions and planning explanations. You can run the script as follows:
 ```shell
-sh data_tools\senna_nusc_converter.sh
+sh data_tools/senna_nusc_converter.sh
 ```
 
 ### Weights
@@ -60,28 +60,28 @@ sh data_tools\senna_nusc_converter.sh
 ### Training
 For Stage-1 Mix Pre-training:
 ```shell
-sh train_tools\pretrain_senna_llava.sh
+sh train_tools/pretrain_senna_llava.sh
 ```
 For Stage-2 Driving Fine-tuning and Stage-3 Planning Fine-tuning (full-parameter fine-tuning):
 ```shell
-sh train_tools\train_senna_llava.sh
+sh train_tools/train_senna_llava.sh
 ```
 For Stage-2 Driving Fine-tuning and Stage-3 Planning Fine-tuning (LoRA fine-tuning):
 ```shell
-sh train_tools\train_senna_llava_lora.sh
+sh train_tools/train_senna_llava_lora.sh
 ```
 In our experiments, we observed that full-parameter fine-tuning outperforms LoRA fine-tuning. Therefore, we recommend using full-parameter fine-tuning. However, if your machine has limited GPU memory (e.g., only 24GB), you may consider using LoRA fine-tuning as an alternative.
 
 ### Evaluation
 You can evaluate the accuracy of Senna meta-action planning using the script below.
 ```shell
-sh eval_tools\senna_plan_cmd_eval_multi_img.sh
+sh eval_tools/senna_plan_cmd_eval_multi_img.sh
 ```
 
 ### Visualization
 By running the visualization script below, you can overlay the predicted meta-actions and front-view scene descriptions onto the front-view image and save the results to the specified path.
 ```shell
-sh eval_tools\senna_plan_visualization.sh
+sh eval_tools/senna_plan_visualization.sh
 ```
 
 
