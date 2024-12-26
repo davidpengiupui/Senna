@@ -1074,11 +1074,18 @@ def get_plan_explaination_qa(info,
     return qa
 
 
-def format_qa(question, answer):    
-    image_token = '<image>'
+def format_qa(question, answer):
+
+    image_prompt = "<FRONT VIEW>:\n<image>\n" \
+                   "<FRONT LEFT VIEW>:\n<image>\n" \
+                   "<FRONT RIGHT VIEW>:\n<image>\n" \
+                   "<BACK LEFT VIEW>:\n<image>\n" \
+                   "<BACK RIGHT VIEW>:\n<image>\n" \
+                   "<BACK VIEW>:\n<image>\n"
+
     question_dict, answer_dict = {}, {}
     question_dict["from"] = "human"
-    question_dict["value"] = question + '\n' + image_token
+    question_dict["value"] = image_prompt + question
     answer_dict["from"] = "gpt"
     answer_dict["value"] = answer
 
